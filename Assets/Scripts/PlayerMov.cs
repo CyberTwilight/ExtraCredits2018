@@ -22,14 +22,4 @@ public class PlayerMov : MonoBehaviour
         rb2d.AddForce(movement * speed);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Death")
-        {
-            Debug.Log("Dead");
-            transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-        }
-
-    }
 }
