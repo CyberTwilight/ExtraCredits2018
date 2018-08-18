@@ -5,6 +5,8 @@ public class PlayerMov : MonoBehaviour
 {
 
     public bool discreteMovementInput;
+    [Tooltip("If set to true, ship will slow down automatically")]
+    public bool Auto_Break;
 
     public float forwardSpeed;
     public float breakProportion;
@@ -46,7 +48,7 @@ public class PlayerMov : MonoBehaviour
             Debug.Log(Vector3.forward * moveVertical * forwardSpeed);
         }
         
-        else if (moveVertical < 0) rb2d.velocity = rb2d.velocity * breakProportion;
+        else if (moveVertical < 0 || (Auto_Break & moveVertical <= 0)) rb2d.velocity = rb2d.velocity * (1 - breakProportion);
     }
 
 }
