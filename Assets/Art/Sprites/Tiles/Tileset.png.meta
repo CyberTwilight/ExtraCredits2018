@@ -4,6 +4,36 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Tileset_0
     21300002: Tileset_1
+    21300004: Tileset_2
+    21300006: Tileset_3
+    21300008: Tileset_4
+    21300010: Tileset_5
+    21300012: Tileset_6
+    21300014: Tileset_7
+    21300016: Tileset_8
+    21300018: Tileset_9
+    21300020: Tileset_10
+    21300022: Tileset_11
+    21300024: Tileset_12
+    21300026: Tileset_13
+    21300028: Tileset_14
+    21300030: Tileset_15
+    21300032: Tileset_16
+    21300034: Tileset_17
+    21300036: Tileset_18
+    21300038: Tileset_19
+    21300040: Tileset_20
+    21300042: Tileset_21
+    21300044: Tileset_22
+    21300046: Tileset_23
+    21300048: Tileset_24
+    21300050: Tileset_25
+    21300052: Tileset_26
+    21300054: Tileset_27
+    21300056: Tileset_28
+    21300058: Tileset_29
+    21300060: Tileset_30
+    21300062: Tileset_31
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +77,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8f8fedd2920e544fa9ab1690f8c2379
+      spriteID: e7b41e3c35704ec4cbb3c2af77638698
       vertices: []
       indices: 
       edges: []
@@ -120,7 +150,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9adf851618edb1b47824a36bc316a47c
+      spriteID: e463ee95564e417419c8e269cc5bd483
       vertices: []
       indices: 
       edges: []
@@ -128,7 +158,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 90380e6ca69b0294d8a60a92c3003017
+    spriteID: 5eb4baf502d5bd24794efc664c4ba3a2
     vertices: []
     indices: 
     edges: []
