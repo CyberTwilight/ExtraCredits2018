@@ -4,7 +4,11 @@ using System.Collections;
 public class PlayerMov : MonoBehaviour
 {
 
-    public float speed;
+    public bool discreteMovementInput;
+
+    public float forwardSpeed;
+    public float breakProportion;
+    public float turnSpeed;
 
     private Rigidbody2D rb2d;      
 
@@ -16,10 +20,33 @@ public class PlayerMov : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.AddForce(movement * speed);
+        float moveHorizontal = 0;
+        float moveVertical = 0;
+
+        if (discreteMovementInput)
+        {
+            if (Input.GetAxis("Horizontal") > 0) moveHorizontal = 1;
+            if (Input.GetAxis("Horizontal") < 0) moveHorizontal = -1;
+            if (Input.GetAxis("Vertical") > 0) moveVertical = 1;
+            if (Input.GetAxis("Vertical") < 0) moveVertical = -1;
+
+        }
+        else
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+        }
+
+        //left and right inputs rotate the ship
+        this.transform.Rotate(new Vector3(0, 0, -turnSpeed * moveHorizontal));
+
+        if (moveVertical > 0)
+        {
+            rb2d.AddRelativeForce(Vector3.up * moveVertical * forwardSpeed);
+            Debug.Log(Vector3.forward * moveVertical * forwardSpeed);
+        }
+        
+        else if (moveVertical < 0) rb2d.velocity = rb2d.velocity * breakProportion;
     }
 
 }
