@@ -1,21 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-using System.Collections;
-
-
-
-public class CameraShake : MonoBehaviour
-{
+public class ScreenShake2 : MonoBehaviour {
 
 
-    public Transform CamTransform;
-    
+    private Transform CamTransform;
+
     public float ShakeDuration;
-    
+
     public float ShakeAmount;
-    
+
     public float DecreaseFactor;
-    
+
     public Vector3 OriginalPos;
 
     void Awake()
@@ -53,10 +50,7 @@ public class CameraShake : MonoBehaviour
         {
 
             CamTransform.localPosition = OriginalPos + Random.insideUnitSphere * ShakeAmount;
-
-
-
-            ShakeDuration -= Time.deltaTime * DecreaseFactor;
+            ShakeDuration -= DecreaseFactor;
 
         }
 
@@ -71,5 +65,4 @@ public class CameraShake : MonoBehaviour
         }
 
     }
-
 }
