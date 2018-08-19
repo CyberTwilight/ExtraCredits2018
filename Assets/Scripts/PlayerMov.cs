@@ -3,16 +3,15 @@ using System.Collections;
 
 public class PlayerMov : MonoBehaviour
 {
-
     public bool discreteMovementInput;
     [Tooltip("If set to true, ship will slow down automatically")]
     public bool Auto_Break;
 
-    public float forwardSpeed;
-    public float breakProportion;
-    public float turnSpeed;
+    [Tooltip("Velocidade da nave")]public float forwardSpeed;
+    [Tooltip("Velocidade de freio da nave")] public float breakProportion;
+    [Tooltip("Velocidade com que a nave gira ao apertar A ou D")]public float turnSpeed;
 
-    private Rigidbody2D rb2d;      
+    private Rigidbody2D rb2d;
 
 
     void Start()
@@ -45,10 +44,13 @@ public class PlayerMov : MonoBehaviour
         if (moveVertical > 0)
         {
             rb2d.AddRelativeForce(Vector3.up * moveVertical * forwardSpeed);
-            Debug.Log(Vector3.forward * moveVertical * forwardSpeed);
         }
         
         else if (moveVertical < 0 || (Auto_Break & moveVertical <= 0)) rb2d.velocity = rb2d.velocity * (1 - breakProportion);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb2d.velocity = Vector2.zero;
+    }
 }
