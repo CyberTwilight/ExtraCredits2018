@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerMov : MonoBehaviour
 {
+    [Tooltip("Forma alternativa de pegar inputs que, independente da \"força\" utilizada, sempre dá velocidade 1 ou -1 em cada direção")]
     public bool discreteMovementInput;
     [Tooltip("If set to true, ship will slow down automatically")]
     public bool Auto_Break;
