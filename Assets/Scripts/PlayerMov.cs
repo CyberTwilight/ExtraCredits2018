@@ -12,6 +12,7 @@ public class PlayerMov : MonoBehaviour
     [Tooltip("Velocidade de freio da nave")] public float breakProportion;
     [Tooltip("Velocidade com que a nave gira ao apertar A ou D")]public float turnSpeed;
     [Tooltip("Usa a desaceleração quando virar")]public bool deacelerateWhenTurning = true;
+    [Tooltip("O quanto ele desacelera")] public float BreakWhenTurningProportion = 1f;
 
     private Rigidbody2D rb2d;
     private float previousRotation; //float porque apenas precisamos do z
@@ -48,8 +49,8 @@ public class PlayerMov : MonoBehaviour
             //quando o jogador vira para um lado, perde um pouco da força
             if (moveHorizontal > 0 && (Mathf.Abs(rb2d.velocity.x) > 0 || Mathf.Abs(rb2d.velocity.y) > 0))
             {
-                float decrement = (1 - Mathf.Abs(transform.rotation.z - previousRotation) / 1f);
-                rb2d.velocity *= (decrement > 1 || decrement < 0) ? 0 : (1 - decrement) * (50 * Time.deltaTime);
+                float decrement = (1 - Mathf.Abs(transform.rotation.z - previousRotation) * (50 * Time.deltaTime) * BreakWhenTurningProportion / 1f);
+                rb2d.velocity *= (decrement > 1 || decrement < 0) ? 0 : (1 - decrement);
             }
 
             else
