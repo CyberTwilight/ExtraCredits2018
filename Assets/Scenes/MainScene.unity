@@ -134121,7 +134121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   discreteMovementInput: 1
   Auto_Break: 1
-  forwardSpeed: 4
+  forwardSpeed: 10
   breakProportion: 0.3
   turnSpeed: 5
   deacelerateWhenTurning: 1
