@@ -134124,6 +134124,7 @@ MonoBehaviour:
   forwardSpeed: 4
   breakProportion: 0.3
   turnSpeed: 5
+  deacelerateWhenTurning: 1
 --- !u!1 &1511478555
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,10 @@ public class PlayerMov : MonoBehaviour
     [Tooltip("Velocidade da nave")]public float forwardSpeed;
     [Tooltip("Velocidade de freio da nave")] public float breakProportion;
     [Tooltip("Velocidade com que a nave gira ao apertar A ou D")]public float turnSpeed;
+    [Tooltip("Usa a desaceleração quando virar")]public bool deacelerateWhenTurning = true;
 
     private Rigidbody2D rb2d;
-
+    private float previousRotation; //float porque apenas precisamos do z
 
     void Start()
     {
@@ -40,14 +41,30 @@ public class PlayerMov : MonoBehaviour
         }
 
         //left and right inputs rotate the ship
-        this.transform.Rotate(new Vector3(0, 0, -turnSpeed * moveHorizontal));
+        this.transform.Rotate(new Vector3(0, 0, -turnSpeed * moveHorizontal * Time.fixedDeltaTime * 50));
+
+        if (deacelerateWhenTurning)
+        {
+            //quando o jogador vira para um lado, perde um pouco da força
+            if (moveHorizontal > 0 && (Mathf.Abs(rb2d.velocity.x) > 0 || Mathf.Abs(rb2d.velocity.y) > 0))
+            {
+                float decrement = (1 - Mathf.Abs(transform.rotation.z - previousRotation) / 1f);
+                rb2d.velocity *= (decrement > 1 || decrement < 0) ? 0 : (1 - decrement) * (50 * Time.deltaTime);
+            }
+
+            else
+            {
+                //atualiza rotação
+                previousRotation = transform.rotation.z;
+            }
+        }
 
         if (moveVertical > 0)
         {
             rb2d.AddRelativeForce(Vector3.up * moveVertical * forwardSpeed);
         }
         
-        else if (moveVertical < 0 || (Auto_Break & moveVertical <= 0)) rb2d.velocity = rb2d.velocity * (1 - breakProportion);
+        else if (moveVertical < 0 || (Auto_Break & moveVertical <= 0)) rb2d.velocity = rb2d.velocity * (1 - breakProportion) * Time.fixedDeltaTime * 50;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
