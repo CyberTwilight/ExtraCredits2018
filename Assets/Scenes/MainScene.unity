@@ -134003,7 +134003,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 1000000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -134119,12 +134119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283807c797be494c88d30c7954d8a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discreteMovementInput: 1
+  discreteMovementInput: 0
   Auto_Break: 1
   forwardSpeed: 10
-  breakProportion: 0.3
+  breakProportion: 0.1
   turnSpeed: 5
-  deacelerateWhenTurning: 1
+  deacelerateWhenTurning: 0
 --- !u!1 &1511478555
 GameObject:
   m_ObjectHideFlags: 0
