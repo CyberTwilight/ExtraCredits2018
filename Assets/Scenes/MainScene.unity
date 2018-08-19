@@ -153,7 +153,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 408bfdaffcdd4e94395fe24e4887f19c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -134194,10 +134194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283807c797be494c88d30c7954d8a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discreteMovementInput: 0
+  discreteMovementInput: 1
   Auto_Break: 1
-  forwardSpeed: 2
-  breakProportion: 0.1
+  forwardSpeed: 4
+  breakProportion: 0.3
   turnSpeed: 5
 --- !u!1 &1511478555
 GameObject:
